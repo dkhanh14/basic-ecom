@@ -1,5 +1,7 @@
+import React from "react";
 import { Heart, Search, ShoppingCart } from "lucide-react";
 import type { NavItem } from "./NavItems";
+import {useNavigate} from "react-router-dom";
 
 const NavbarDesktop = ({
    navItems,
@@ -11,6 +13,8 @@ const NavbarDesktop = ({
     setHoveredItem: (label: string | null) => void;
 }) => {
     const selectedItem = navItems.filter(item => item.label === hoveredItem)[0] || null;
+
+    const navigate = useNavigate();
 
     const renderChildren = (children: NavItem[]) => (
         <div className="flex space-x-8">
@@ -37,8 +41,8 @@ const NavbarDesktop = ({
     return (
         <div>
             <div className="hidden sm:grid grid-cols-12 border border-b border-gray-200 px-16">
-                <div className="col-span-2 w-19">
-                    <img src="/ownego.jpg" alt="ownego logo" className="w-full" />
+                <div className="col-span-2 w-19 cursor-pointer" onClick={() => navigate("/")}>
+                    <img src="/ownego.jpg" alt="ownego logo" className="w-full"  />
                 </div>
 
                 <div className="col-span-8 flex flex-row justify-center text-base font-semibold items-center">
@@ -62,7 +66,7 @@ const NavbarDesktop = ({
                         <Search className="w-5 h-5 text-gray-500"/>
                         <input className="w-40 outline-none text-sm " type="text" placeholder="Tìm kiếm" name="search" />
                     </div>
-                    <div className="items-center mx-4">
+                    <div className="items-center mx-4 cursor-pointer" onClick={() => navigate("/favourites")}>
                         <Heart className="w-6 h-6 text-gray-500"/>
                     </div>
                     <div className="items-center">

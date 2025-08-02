@@ -1,14 +1,18 @@
+import React from "react";
 import { useState } from "react";
 import type { NavItem } from "./NavItems";
+import {useNavigate} from "react-router-dom";
 
 const NavbarMobile = ({ navItems }: { navItems: NavItem[] }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeItem, setActiveItem] = useState<string | null>(null);
 
+    const navigate = useNavigate();
+
     return (
         <div className="sm:hidden">
             <div className="flex items-center justify-between px-4 border-b border-gray-200">
-                <div>
+                <div onClick={() => navigate("/")}>
                     <img src="/ownego.jpg" alt="logo" className="w-19" />
                 </div>
                 <button

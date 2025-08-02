@@ -1,13 +1,13 @@
+import React from "react";
 import { SideItems } from "./SideItems";
 import { useState } from "react";
 
 const SidebarMobile = () => {
-    const defaultItem = SideItems[0]; // Tất cả giày
+    const defaultItem = SideItems[0];
     const [activeOption, setActiveOption] = useState(defaultItem.options?.[0]?.value || "");
 
     return (
         <div className="md:hidden">
-            {/* Tabs từ options của SideItems[0] */}
             <div className="w-full border-b bg-white">
                 <div className="flex overflow-x-auto whitespace-nowrap scrollbar-hide px-4 sm:px-8 space-x-6">
                     {defaultItem.options?.map(({ label, value }) => {
@@ -29,7 +29,6 @@ const SidebarMobile = () => {
                 </div>
             </div>
 
-            {/* Nội dung khi chọn option */}
             <div className="p-4">
                 <h2 className="text-xl font-bold mb-2">Nội dung: {activeOption}</h2>
                 <p className="text-gray-700">
